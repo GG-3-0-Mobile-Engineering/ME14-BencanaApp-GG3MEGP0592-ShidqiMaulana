@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "816630431454",
+    "project_id": "final-project-gigih",
+    "storage_bucket": "final-project-gigih.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816630431454:android:d309100f4c161407c88c4f",
+        "android_client_info": {
+          "package_name": "com.example.finalprojectgigih"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "816630431454-f505e6ljec3ibgr8ab1hd7pemgkiejb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcBcxUhLUmwsBH0Mvkes5AggHqCSyMd1Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "816630431454-f505e6ljec3ibgr8ab1hd7pemgkiejb1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
