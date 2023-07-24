@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Final Project GIGIH</string>
+
+    <string name="empty_data">No data found</string>
+    <string name="error">Oops! something went wrong.</string>
+    <string name="try_again">Please check your connection and try again later.</string>
+
 </resources>
