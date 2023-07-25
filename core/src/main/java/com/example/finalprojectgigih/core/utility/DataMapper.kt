@@ -9,7 +9,12 @@ object DataMapper {
         val reportList = ArrayList<ReportEntity>()
         input.map {
             val report = ReportEntity(
-                id = it.properties?.pkey ?: "",
+                pkey = it.properties?.pkey ?: "",
+                imageUrl = it.properties?.imageUrl ?: "",
+                disasterType = it.properties?.disasterType ?: "",
+                title = it.properties?.title ?: "",
+                description = it.properties?.text ?: "",
+                coordinates = it.coordinates
             )
             reportList.add(report)
         }
@@ -19,7 +24,12 @@ object DataMapper {
     fun mapEntitiesToDomain(input: List<ReportEntity>): List<Report> =
         input.map {
             Report(
-                reportId = it.id,
+                pkey = it.pkey,
+                imageUrl = it.imageUrl,
+                disasterType = it.disasterType,
+                title = it.title,
+                description = it.description,
+                coordinates = it.coordinates
             )
         }
 }

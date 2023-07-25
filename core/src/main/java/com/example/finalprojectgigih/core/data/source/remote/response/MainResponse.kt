@@ -62,7 +62,7 @@ data class ReportData(
 data class Properties(
 
 	@field:SerializedName("image_url")
-	val imageUrl: Any? = null,
+	val imageUrl: String? = null,
 
 	@field:SerializedName("disaster_type")
 	val disasterType: String? = null,
@@ -74,7 +74,7 @@ data class Properties(
 	val source: String? = null,
 
 	@field:SerializedName("title")
-	val title: Any? = null,
+	val title: String? = null,
 
 	@field:SerializedName("url")
 	val url: String? = null,
@@ -158,7 +158,7 @@ data class Tags(
 data class GeometriesItem(
 
 	@field:SerializedName("coordinates")
-	val coordinates: List<Any?>? = null,
+	val coordinates: List<Double?>? = null,
 
 	@field:SerializedName("type")
 	val type: String? = null,
