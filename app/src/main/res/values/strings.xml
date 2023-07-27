@@ -14,5 +14,6 @@
     <string name="haze">haze</string>
     <string name="wind">wind</string>
     <string name="volcano">volcano</string>
+    <string name="setting">Setting</string>
 
 </resources>

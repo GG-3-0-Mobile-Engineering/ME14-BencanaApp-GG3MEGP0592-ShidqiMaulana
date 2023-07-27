@@ -1,6 +1,6 @@
 package com.example.finalprojectgigih.di
 
-import com.example.finalprojectgigih.MainViewModel
+import com.example.finalprojectgigih.viewmodel.MainViewModel
 import com.example.finalprojectgigih.core.domain.usecase.MainInteractor
 import com.example.finalprojectgigih.core.domain.usecase.MainUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
