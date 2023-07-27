@@ -1,11 +1,13 @@
 package com.example.finalprojectgigih.core.utility
 
+import com.example.finalprojectgigih.core.data.source.local.entity.AreaCodeEntity
 import com.example.finalprojectgigih.core.data.source.local.entity.ReportEntity
 import com.example.finalprojectgigih.core.data.source.remote.response.GeometriesItem
+import com.example.finalprojectgigih.core.domain.model.AreaCode
 import com.example.finalprojectgigih.core.domain.model.Report
 
 object DataMapper {
-    fun mapResponsesToEntities(input: List<GeometriesItem>): List<ReportEntity> {
+    fun mapReportResponsesToEntities(input: List<GeometriesItem>): List<ReportEntity> {
         val reportList = ArrayList<ReportEntity>()
         input.map {
             val report = ReportEntity(
@@ -21,7 +23,7 @@ object DataMapper {
         return reportList
     }
 
-    fun mapEntitiesToDomain(input: List<ReportEntity>): List<Report> =
+    fun mapReportEntitiesToDomain(input: List<ReportEntity>): List<Report> =
         input.map {
             Report(
                 pkey = it.pkey,
@@ -32,4 +34,19 @@ object DataMapper {
                 coordinates = it.coordinates
             )
         }
+
+    fun mapAreaEntitiesToDomain(input: List<AreaCodeEntity>): List<AreaCode> =
+        input.map {
+            AreaCode(
+                code = it.code,
+                name = it.name,
+            )
+        }
+
+    fun mapAreaDomainsToEntities(input: AreaCode): AreaCodeEntity =
+        AreaCodeEntity(
+            code = input.code ?: "",
+            name = input.name ?: "",
+        )
+
 }

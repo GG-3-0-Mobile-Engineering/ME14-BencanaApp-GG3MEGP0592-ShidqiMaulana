@@ -4,5 +4,6 @@
     <string name="empty_data">No data found</string>
     <string name="error">Oops! something went wrong.</string>
     <string name="try_again">Please check your connection and try again later.</string>
+    <string name="searchbar_hint">Provinsi</string>
 
 </resources>

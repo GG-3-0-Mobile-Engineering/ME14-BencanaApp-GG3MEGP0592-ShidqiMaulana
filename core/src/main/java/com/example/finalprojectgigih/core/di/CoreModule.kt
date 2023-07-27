@@ -7,6 +7,7 @@ import com.example.finalprojectgigih.core.data.source.local.room.MainDatabase
 import com.example.finalprojectgigih.core.data.source.remote.RemoteDataSource
 import com.example.finalprojectgigih.core.data.source.remote.network.ApiService
 import com.example.finalprojectgigih.core.domain.repository.IMainRepository
+import com.example.finalprojectgigih.core.utility.AppExecutors
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
 import okhttp3.CertificatePinner
@@ -58,8 +59,10 @@ val networkModule = module {
 val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
+    factory { AppExecutors() }
     single<IMainRepository> {
         MainRepository(
+            get(),
             get(),
             get()
         )
