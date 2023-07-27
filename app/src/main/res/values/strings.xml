@@ -8,5 +8,11 @@
     <string name="dark_mode">Dark Mode</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="flood">flood</string>
+    <string name="earthquake">earthquake</string>
+    <string name="fire">fire</string>
+    <string name="haze">haze</string>
+    <string name="wind">wind</string>
+    <string name="volcano">volcano</string>
 
 </resources>

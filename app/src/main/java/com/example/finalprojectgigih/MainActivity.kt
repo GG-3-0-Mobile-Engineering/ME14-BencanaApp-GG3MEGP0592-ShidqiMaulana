@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
+import androidx.core.view.forEach
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalprojectgigih.core.data.Resource
 import com.example.finalprojectgigih.core.ui.MainAdapter
@@ -23,6 +24,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.chip.Chip
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.sidesheet.SideSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -100,6 +102,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             sideSheetDialog.show()
         }
 
+        binding.cgDisaster.forEach { child ->
+            (child as? Chip)?.setOnCheckedChangeListener { _, _ ->
+                registerFilterChanged()
+            }
+        }
     }
 
     private fun observeData(areaCode: String = "") {
@@ -182,7 +189,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         var marker = LatLng(0.0, 0.0)
         var markerColor: Float
         mMap.clear()
-        mainViewModel.reportList.value?.forEach {
+        mainViewModel.getFilteredReport().forEach {
             marker = LatLng(it.coordinates?.get(1) ?: 0.0, it.coordinates?.get(0) ?: 0.0)
             markerColor = when (it.disasterType) {
                 "flood" -> BitmapDescriptorFactory.HUE_AZURE
@@ -200,6 +207,16 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             )
         }
         mMap.moveCamera(CameraUpdateFactory.newLatLng(marker))
+    }
+
+    private fun registerFilterChanged() {
+        val ids = binding.cgDisaster.checkedChipIds
+        val disasters = mutableListOf<CharSequence>()
+        ids.forEach { id ->
+            disasters.add(binding.cgDisaster.findViewById<Chip>(id).text)
+        }
+        mainViewModel.filterDisaster = disasters.joinToString(", ")
+        populateMap()
     }
 
 }

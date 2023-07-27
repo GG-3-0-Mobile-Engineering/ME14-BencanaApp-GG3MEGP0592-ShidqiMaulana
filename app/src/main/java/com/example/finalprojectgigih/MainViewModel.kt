@@ -11,6 +11,10 @@ class MainViewModel(private val mainUseCase: MainUseCase) : ViewModel() {
 
     var reportList: MutableLiveData<List<Report>> = MutableLiveData()
 
+    var filteredReportList: ArrayList<Report> = ArrayList()
+
+    var filterDisaster: String = "flood, earthquake, fire, haze, wind, volcano"
+
     fun getReportList(areaCode: String) = mainUseCase.getReports(areaCode).asLiveData()
 
     var areaNameList: List<String> = mainUseCase.getAreaNameList()
@@ -27,4 +31,11 @@ class MainViewModel(private val mainUseCase: MainUseCase) : ViewModel() {
         return areaCode
     }
 
+    fun getFilteredReport(): ArrayList<Report> {
+        filteredReportList.clear()
+        reportList.value?.forEach {
+            if (filterDisaster.contains(it.disasterType.toString())) filteredReportList.add(it)
+        }
+        return filteredReportList
+    }
 }

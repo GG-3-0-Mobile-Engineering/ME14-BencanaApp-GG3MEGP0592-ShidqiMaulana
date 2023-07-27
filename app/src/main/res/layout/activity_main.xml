@@ -13,27 +13,98 @@
         android:layout_height="match_parent"
         tools:context=".MapsActivity" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_search"
-        style="?attr/textInputOutlinedStyle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/searchbar_hint"
-        android:padding="8dp"
-        app:boxBackgroundColor="?attr/colorOnPrimary"
-        app:endIconDrawable="@drawable/ic_settings"
-        app:endIconMode="custom"
-        app:startIconDrawable="@drawable/ic_search">
+        android:orientation="vertical">
 
-        <AutoCompleteTextView
-            android:id="@+id/act_search"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_search"
+            style="?attr/textInputOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:completionThreshold="1"
-            android:imeOptions="actionSend"
-            android:inputType="text" />
+            android:hint="@string/searchbar_hint"
+            android:padding="8dp"
+            app:boxBackgroundColor="?attr/colorOnPrimary"
+            app:endIconDrawable="@drawable/ic_settings"
+            app:endIconMode="custom"
+            app:startIconDrawable="@drawable/ic_search">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <AutoCompleteTextView
+                android:id="@+id/act_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:completionThreshold="1"
+                android:imeOptions="actionSend"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cg_disaster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                app:singleLine="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_flood"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/flood" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_earthquake"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/earthquake" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_fire"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/fire" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_haze"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/haze" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_wind"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/wind" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_volcano"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/volcano" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/standard_bottom_sheet"
