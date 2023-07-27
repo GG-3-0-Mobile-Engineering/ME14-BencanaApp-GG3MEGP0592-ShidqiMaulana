@@ -10,6 +10,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalprojectgigih.core.data.Resource
@@ -22,6 +23,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.materialswitch.MaterialSwitch
+import com.google.android.material.sidesheet.SideSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
 
         val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+            .findFragmentById(R.id.fcv_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
         mainAdapter = MainAdapter()
@@ -73,6 +76,30 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             }
             handled
         }
+
+        val sideSheetDialog = SideSheetDialog(this@MainActivity)
+        sideSheetDialog.setContentView(R.layout.sidesheet_setting)
+        val switch = sideSheetDialog.findViewById<MaterialSwitch>(R.id.ms_darkmode)
+
+        val sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE)
+        val isDarkMode = sharedPreferences.getBoolean("DarkModeState", false)
+        switch?.isChecked = isDarkMode
+        switch?.setOnCheckedChangeListener { _, isChecked ->
+            val editor = sharedPreferences.edit()
+            if (isChecked) {
+                editor.putBoolean("DarkModeState", true)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                editor.putBoolean("DarkModeState", false)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+            editor.apply()
+        }
+
+        binding.tilSearch.setEndIconOnClickListener {
+            sideSheetDialog.show()
+        }
+
     }
 
     private fun observeData(areaCode: String = "") {
@@ -168,13 +195,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             }
             mMap.addMarker(
                 MarkerOptions()
-                    .position(marker)
-                    .title(it.disasterType)
+                    .position(marker).title(it.disasterType)
                     .icon(BitmapDescriptorFactory.defaultMarker(markerColor))
             )
         }
         mMap.moveCamera(CameraUpdateFactory.newLatLng(marker))
-
     }
 
 }
