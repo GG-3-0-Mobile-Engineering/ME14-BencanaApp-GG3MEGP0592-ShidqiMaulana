@@ -120,7 +120,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                     is Resource.Success -> {
                         stateSuccess(reportList.data?.isEmpty() == true)
                         mainViewModel.reportList.value = reportList.data
-                        mainAdapter.setData(reportList.data)
                         populateMap()
                     }
 
@@ -180,16 +179,17 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         mMap.setMinZoomPreference(8.0f)
         mMap.setMaxZoomPreference(16.0f)
-//        mMap.isMyLocationEnabled = true
-
         observeData()
     }
 
     private fun populateMap() {
+        val filteredData = mainViewModel.getFilteredReport()
+        mainAdapter.setData(filteredData)
+
         var marker = LatLng(0.0, 0.0)
         var markerColor: Float
         mMap.clear()
-        mainViewModel.getFilteredReport().forEach {
+        filteredData.forEach {
             marker = LatLng(it.coordinates?.get(1) ?: 0.0, it.coordinates?.get(0) ?: 0.0)
             markerColor = when (it.disasterType) {
                 "flood" -> BitmapDescriptorFactory.HUE_AZURE
@@ -206,7 +206,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                     .icon(BitmapDescriptorFactory.defaultMarker(markerColor))
             )
         }
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(marker))
+        if (filteredData.isNotEmpty()) mMap.moveCamera(CameraUpdateFactory.newLatLng(marker))
     }
 
     private fun registerFilterChanged() {

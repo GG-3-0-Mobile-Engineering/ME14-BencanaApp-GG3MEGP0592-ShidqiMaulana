@@ -5,7 +5,6 @@ import com.example.finalprojectgigih.core.domain.repository.IMainRepository
 class MainInteractor(private val mainRepository: IMainRepository) : MainUseCase {
 
     override fun getReports(areaCode: String) = mainRepository.getReports(areaCode)
-//    override fun getSearchedReports(areaCode: String) = mainRepository.getSearchedReports(areaCode)
 
     override fun getAreaNameList() = mainRepository.getAreaNameList()
 

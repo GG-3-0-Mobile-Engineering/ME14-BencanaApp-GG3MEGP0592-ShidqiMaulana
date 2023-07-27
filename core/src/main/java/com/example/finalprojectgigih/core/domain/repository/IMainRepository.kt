@@ -9,7 +9,6 @@ interface IMainRepository {
 
     fun getReports(areaCode: String): Flow<Resource<List<Report>>>
 
-//    fun getSearchedReports(areaCode: String): Flow<Resource<List<Report>>>
     fun insertAreaCode(areaCode: AreaCode)
 
     fun getAreaNameList(): List<String>

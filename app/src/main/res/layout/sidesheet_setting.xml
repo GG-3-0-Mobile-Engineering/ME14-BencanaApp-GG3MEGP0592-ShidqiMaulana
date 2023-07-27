@@ -14,10 +14,10 @@
 
         <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/ms_darkmode"
+            style="@style/CodeFontBold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dark_mode"
-            style="@style/CodeFontBold"
             app:thumbIcon="@drawable/ic_dark_mode" />
 
     </LinearLayout>

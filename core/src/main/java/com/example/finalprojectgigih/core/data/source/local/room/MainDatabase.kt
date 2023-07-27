@@ -14,5 +14,4 @@ import com.example.finalprojectgigih.core.utility.ListConverter
 abstract class MainDatabase : RoomDatabase() {
     abstract fun mainDAO(): MainDAO
 
-
 }

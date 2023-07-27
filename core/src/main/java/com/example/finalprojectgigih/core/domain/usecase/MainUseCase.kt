@@ -9,8 +9,6 @@ interface MainUseCase {
 
     fun getReports(areaCode: String): Flow<Resource<List<Report>>>
 
-//    fun getSearchedReports(areaCode: String): Flow<Resource<List<Report>>>
-
     fun getAreaNameList(): List<String>
 
     fun getAreaCodeList(): List<AreaCode>

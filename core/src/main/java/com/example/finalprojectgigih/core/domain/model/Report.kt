@@ -10,5 +10,8 @@ data class Report(
     var disasterType: String? = null,
     var title: String? = null,
     var description: String? = null,
+    var status: String? = null,
+    var createdAt: String? = null,
+    var source: String? = null,
     var coordinates: List<Double?>? = ArrayList(),
 ) : Parcelable

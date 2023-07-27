@@ -31,22 +31,4 @@ class RemoteDataSource constructor(private val apiService: ApiService) {
             }
         }.flowOn(Dispatchers.IO) as Flow<ApiResponse<List<GeometriesItem>>>
 
-//    suspend fun getSearchedReports(areaCode: String): Flow<ApiResponse<List<GeometriesItem>>> =
-//        flow {
-//            try {
-//                val response = apiService.getSearchedReportsArchive(areaCode)
-//                val dataArray = response.result?.objects?.output?.geometries
-//                if (dataArray != null) {
-//                    if (dataArray.isNotEmpty()) {
-//                        emit(ApiResponse.Success(response.result.objects.output.geometries))
-//                    } else {
-//                        emit(ApiResponse.Empty)
-//                    }
-//                }
-//            } catch (e: Exception) {
-//                emit(ApiResponse.Error(e.toString()))
-//                Log.e("RemoteDataSource", e.toString())
-//            }
-//        }.flowOn(Dispatchers.IO) as Flow<ApiResponse<List<GeometriesItem>>>
-
 }

@@ -43,20 +43,21 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ListViewHolder>() {
                 if (!data.imageUrl.isNullOrEmpty()) {
                     Picasso.get().load(data.imageUrl).fit()
                         .error(R.drawable.ic_errorimage)
-                        .into(itemMovieIvPoster, object : Callback {
+                        .into(itemIvPoster, object : Callback {
                             override fun onSuccess() {
-                                itemMovieProgressbar.visibility = View.GONE
+                                itemProgressbar.visibility = View.GONE
                             }
 
                             override fun onError(e: Exception?) {
-                                itemMovieProgressbar.visibility = View.GONE
+                                itemProgressbar.visibility = View.GONE
                             }
                         })
-                }
-                itemMovieTvTitle.text = data.title
-                itemMovieTvVoteaverage.text = data.disasterType
-                itemMovieTvPopularity.text = data.pkey
-                itemMovieTvOverview.text = data.description
+                } else Picasso.get().load(R.drawable.ic_noimage).into(itemIvPoster)
+
+                itemTvDisastertype.text = data.disasterType
+                itemTvOverview.text = data.description
+                itemTvStatus.text = data.status
+                itemTvTime.text = data.createdAt
             }
         }
 

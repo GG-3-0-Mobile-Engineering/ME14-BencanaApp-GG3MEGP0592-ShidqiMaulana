@@ -38,27 +38,6 @@ class MainRepository(
             }
         }
 
-//    override fun getSearchedReports(areaCode: String): Flow<Resource<List<Report>>> =
-//        flow {
-//            emit(Resource.Loading())
-//            when (val apiResponse = remoteDataSource.getSearchedReports(areaCode).first()) {
-//                is ApiResponse.Success -> {
-//                    val reportEntity = DataMapper.mapReportResponsesToEntities(apiResponse.data)
-//                    val report = DataMapper.mapReportEntitiesToDomain(reportEntity)
-//                    emit(Resource.Success(report))
-//                }
-//
-//                is ApiResponse.Empty -> {
-//                    val report = ArrayList<Report>() as List<Report>
-//                    emit(Resource.Success(report))
-//                }
-//
-//                is ApiResponse.Error -> {
-//                    emit(Resource.Error(apiResponse.errorMessage))
-//                }
-//            }
-//        }
-
     override fun insertAreaCode(areaCode: AreaCode) {
         val areaEntities = DataMapper.mapAreaDomainsToEntities(areaCode)
         appExecutors.diskIO().execute { localDataSource.insertAreaCode(areaEntities) }

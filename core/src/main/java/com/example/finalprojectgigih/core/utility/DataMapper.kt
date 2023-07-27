@@ -16,6 +16,9 @@ object DataMapper {
                 disasterType = it.properties?.disasterType ?: "",
                 title = it.properties?.title ?: "",
                 description = it.properties?.text ?: "",
+                status = it.properties?.status ?: "",
+                createdAt = it.properties?.createdAt ?: "",
+                source = it.properties?.source ?: "",
                 coordinates = it.coordinates
             )
             reportList.add(report)
@@ -31,6 +34,9 @@ object DataMapper {
                 disasterType = it.disasterType,
                 title = it.title,
                 description = it.description,
+                status = it.status,
+                createdAt = it.createdAt,
+                source = it.source,
                 coordinates = it.coordinates
             )
         }

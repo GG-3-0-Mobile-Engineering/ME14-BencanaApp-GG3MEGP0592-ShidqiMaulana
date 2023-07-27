@@ -15,9 +15,9 @@
         android:layout_height="match_parent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/item_movie_cv_poster"
-            android:layout_width="80dp"
-            android:layout_height="120dp"
+            android:id="@+id/item_cv_poster"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
             android:layout_margin="4dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
@@ -26,94 +26,66 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/item_movie_iv_poster"
+                android:id="@+id/item_iv_poster"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#0d253f"
                 tools:ignore="ContentDescription" />
 
             <ProgressBar
-                android:id="@+id/item_movie_progressbar"
+                android:id="@+id/item_progressbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:visibility="gone" />
 
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/item_movie_tv_title"
+            android:id="@+id/item_tv_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:ellipsize="end"
-            android:fontFamily="@font/roboto_bold"
+            android:fontFamily="@font/roboto_regular"
             android:maxLines="2"
-            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/item_movie_cv_poster"
+            app:layout_constraintStart_toEndOf="@id/item_cv_poster"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/item_movie_iv_star"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_margin="6dp"
-            app:layout_constraintEnd_toStartOf="@id/item_movie_tv_voteaverage"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@id/item_movie_cv_poster"
-            app:layout_constraintTop_toBottomOf="@id/item_movie_tv_title"
-            tools:ignore="ContentDescription" />
-
         <TextView
-            android:id="@+id/item_movie_tv_voteaverage"
+            android:id="@+id/item_tv_disastertype"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
-            android:fontFamily="@font/roboto_regular"
-            android:textColor="#666666"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@id/item_movie_iv_popular"
-            app:layout_constraintHorizontal_weight="3"
-            app:layout_constraintStart_toEndOf="@id/item_movie_iv_star"
-            app:layout_constraintTop_toBottomOf="@id/item_movie_tv_title" />
-
-        <ImageView
-            android:id="@+id/item_movie_iv_popular"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_margin="6dp"
-            app:layout_constraintEnd_toStartOf="@id/item_movie_tv_popularity"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@id/item_movie_tv_voteaverage"
-            app:layout_constraintTop_toBottomOf="@id/item_movie_tv_title"
-            tools:ignore="ContentDescription" />
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toStartOf="@id/item_tv_status"
+            app:layout_constraintStart_toEndOf="@id/item_cv_poster"
+            app:layout_constraintTop_toBottomOf="@id/item_tv_time" />
 
         <TextView
-            android:id="@+id/item_movie_tv_popularity"
+            android:id="@+id/item_tv_status"
+            style="@style/ShapeAppearanceOverlay.Material3.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
-            android:fontFamily="@font/roboto_regular"
-            android:textColor="#666666"
-            android:textSize="12sp"
+            android:fontFamily="@font/roboto_bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="3"
-            app:layout_constraintStart_toEndOf="@id/item_movie_iv_popular"
-            app:layout_constraintTop_toBottomOf="@id/item_movie_tv_title" />
+            app:layout_constraintStart_toEndOf="@id/item_tv_disastertype"
+            app:layout_constraintTop_toBottomOf="@id/item_tv_time" />
 
         <TextView
-            android:id="@+id/item_movie_tv_overview"
+            android:id="@+id/item_tv_overview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:ellipsize="end"
             android:fontFamily="@font/roboto_regular"
             android:maxLines="2"
-            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/item_movie_cv_poster"
-            app:layout_constraintTop_toBottomOf="@id/item_movie_iv_star" />
+            app:layout_constraintStart_toEndOf="@id/item_cv_poster"
+            app:layout_constraintTop_toBottomOf="@id/item_tv_status" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
