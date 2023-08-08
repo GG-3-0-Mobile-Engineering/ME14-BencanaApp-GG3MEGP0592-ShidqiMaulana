@@ -10,11 +10,11 @@ plugins {
 apply from: '../shared_dependencies.gradle'
 
 android {
-    namespace 'com.example.finalprojectgigih'
+    namespace 'com.gigih.awarealert'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.finalprojectgigih"
+        applicationId "com.gigih.awarealert"
         minSdk 24
         targetSdk 33
         versionCode 1
