@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             startActivity(
                 Intent(
                     this@MainActivity,
-                    com.gigih.awarealert.view.SettingActivity::class.java
+                    SettingActivity::class.java
                 )
             )
         }
@@ -174,25 +174,28 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
         var marker = LatLng(0.0, 0.0)
         var markerColor: Float
-        mMap.clear()
-        filteredData.forEach {
-            marker = LatLng(it.coordinates?.get(1) ?: 0.0, it.coordinates?.get(0) ?: 0.0)
-            markerColor = when (it.disasterType) {
-                "flood" -> BitmapDescriptorFactory.HUE_AZURE
-                "earthquake" -> BitmapDescriptorFactory.HUE_MAGENTA
-                "fire" -> BitmapDescriptorFactory.HUE_ROSE
-                "haze" -> BitmapDescriptorFactory.HUE_ORANGE
-                "wind" -> BitmapDescriptorFactory.HUE_YELLOW
-                "volcano" -> BitmapDescriptorFactory.HUE_CYAN
-                else -> BitmapDescriptorFactory.HUE_RED
+
+        if (::mMap.isInitialized) {
+            mMap.clear()
+            filteredData.forEach {
+                marker = LatLng(it.coordinates?.get(1) ?: 0.0, it.coordinates?.get(0) ?: 0.0)
+                markerColor = when (it.disasterType) {
+                    "flood" -> BitmapDescriptorFactory.HUE_AZURE
+                    "earthquake" -> BitmapDescriptorFactory.HUE_MAGENTA
+                    "fire" -> BitmapDescriptorFactory.HUE_ROSE
+                    "haze" -> BitmapDescriptorFactory.HUE_ORANGE
+                    "wind" -> BitmapDescriptorFactory.HUE_YELLOW
+                    "volcano" -> BitmapDescriptorFactory.HUE_CYAN
+                    else -> BitmapDescriptorFactory.HUE_RED
+                }
+                mMap.addMarker(
+                    MarkerOptions()
+                        .position(marker).title(it.disasterType)
+                        .icon(BitmapDescriptorFactory.defaultMarker(markerColor))
+                )
             }
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(marker).title(it.disasterType)
-                    .icon(BitmapDescriptorFactory.defaultMarker(markerColor))
-            )
+            if (filteredData.isNotEmpty()) mMap.moveCamera(CameraUpdateFactory.newLatLng(marker))
         }
-        if (filteredData.isNotEmpty()) mMap.moveCamera(CameraUpdateFactory.newLatLng(marker))
     }
 
     private fun registerFilterChanged() {

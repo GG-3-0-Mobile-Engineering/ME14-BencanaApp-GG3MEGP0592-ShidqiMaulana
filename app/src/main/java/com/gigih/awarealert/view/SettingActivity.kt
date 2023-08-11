@@ -13,7 +13,7 @@ class SettingActivity : AppCompatActivity() {
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPreferences = getSharedPreferences("SharedPrefs", AppCompatActivity.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE)
         val isDarkMode = sharedPreferences?.getBoolean("DarkModeState", false)
 
         binding.msDarkmode.isChecked = isDarkMode ?: false
