@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.gigih.awarealert.core.di.databaseModule
 import com.gigih.awarealert.core.di.networkModule
 import com.gigih.awarealert.core.di.repositoryModule
+import com.gigih.awarealert.di.useCaseModule
+import com.gigih.awarealert.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -18,9 +20,7 @@ class MainApp : Application() {
             androidContext(this@MainApp)
             modules(
                 listOf(
-                    databaseModule, networkModule, repositoryModule,
-                    com.gigih.awarealert.di.useCaseModule,
-                    com.gigih.awarealert.di.viewModelModule
+                    databaseModule, networkModule, repositoryModule, useCaseModule, viewModelModule
                 )
             )
         }
