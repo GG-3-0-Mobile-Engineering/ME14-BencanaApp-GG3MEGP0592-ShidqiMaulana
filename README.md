@@ -19,4 +19,6 @@ MAPS_API_KEY=YOUR_API_KEY
   3. Click **Build/Rebuild Project** at your IDE
   4. Click **Run Project** at your IDE
 
-### Download apk <a href="https://drive.google.com/file/d/1f-UM5P9VGdYwCfXyy1ejNDlTzQfMtpFY/view?usp=sharing"> here </a>
+### Download midterm apk <a href="https://drive.google.com/file/d/1f-UM5P9VGdYwCfXyy1ejNDlTzQfMtpFY/view?usp=sharing"> here </a>
+
+### Download final apk <a href="https://drive.google.com/file/d/1Zyg5FVaA319144xF5z1d-58dkyB0EVsG/view?usp=sharing"> here </a>
